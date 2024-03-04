@@ -1,0 +1,107 @@
+<!-- result.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://whatsanalyze.com/favicon.ico" type="image/x-icon">
+    <title>Pragmatic - The WhatsApp Chat Analyzer</title>
+    <link rel="stylesheet" href="/static/css/result.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Result Page</h1>
+        
+        <div class="stats-grid">
+            <!-- Display other statistics -->
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p>{{ stats.total_users }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Total Messages</h3>
+                <p>{{ stats.num_messages }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Total Words</h3>
+                <p>{{ stats.words }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Links Shared</h3>
+                <p>{{ stats.num_links }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Media Shared</h3>
+                <p>{{ stats.num_media_messages }}</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Total Messages per Day</h3>
+                <p>{{ stats.total_messages_per_day }}</p>
+            </div>
+        </div>
+
+        <!-- Display most talkative user -->
+<div class="stat-card">
+    <p>Most Talkative user in your group is <strong>{{ most_talkative_user }}</strong> with the total messages typed are <strong>{{ most_talkative_message_count }}</strong>.</p>
+</div>
+
+        <!-- Display word cloud centered on the page -->
+        <div class="wordcloud-container">
+            <h2>Word Cloud</h2>
+            <img src="{{ wordcloud_image }}" alt="Word Cloud" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        </div>
+
+<!-- Display emoji pie chart below word cloud -->
+<div class="emoji-chart-container">
+    <!-- Emoji pie chart image -->
+    <img src="{{ emoji_chart_image_path }}" alt="Emoji Chart" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+    <div class="emoji-list-container">
+        <h2>Emoji List</h2>
+        <div class="emoji-list-scroll">
+            <ul class="emoji-list">
+                {% for emoji, count in emoji_list %}
+                    <li>{{ emoji }} ({{ count }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <!-- Display busiest day bar graph -->
+        <div class="bar-graph-container">
+            <h2>Most Busy Day</h2>
+            <img src="{{ busiest_day_bar_graph_path }}" alt="Busiest Day Bar Graph" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        </div>
+
+        <!-- Display busiest month bar graph -->
+        <div class="bar-graph-container">
+            <h2>Most Busy Month</h2>
+            <img src="{{ busiest_month_bar_graph_path }}" alt="Busiest Month Bar Graph" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        </div>
+
+        <!-- Display activity heatmap -->
+        <div class="activity-heatmap-container">
+            <h2>Message Activity Heatmap</h2>
+            <img src="{{ activity_heatmap_image }}" alt="Activity Heatmap" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        </div>
+        <!-- Display user activity bar graph -->
+<div class="user-activity-bar-graph-container">
+    <h2>User Activity Bar Graph</h2>
+    <img src="{{ user_activity_bar_graph_path }}" alt="User Activity Bar Graph">
+</div>
+
+<!-- Display common words bar graph -->
+<div class="common-words-bar-graph-container">
+    <h2>Common Words Bar Graph</h2>
+    <img src="{{ common_words_bar_graph_path }}" alt="Common Words Bar Graph">
+</div>
+    </div>
+</body>
+</html>
